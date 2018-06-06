@@ -233,12 +233,25 @@ document.querySelector('.restart').addEventListener('click', function(){
 /*
  * End game modal
  */
+ // Star rating for modal
+ function modalRating() {
+     if (moves > 16) {
+         document.getElementById('star-three-modal').style.display = 'none';
+     }
+     if (moves > 24) {
+         document.getElementById('star-two-modal').style.display = 'none';
+     }
+ }
+
+
 //Display modal function
 function displayModal() {
     modal.style.display = "block";
 
     // Stats for modal
     document.querySelector('.modal-body').innerHTML = 'You completed the game in ' + totalSeconds + ' seconds, and in ' + moves + ' moves!';
+    modalRating();
+
 }
 
 const modal = document.getElementById('modal');

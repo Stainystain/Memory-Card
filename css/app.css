@@ -220,6 +220,20 @@ h1 {
     animation-duration: 0.4s;
 }
 
+.modal-stars {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    margin: 10px;
+    color: gold;
+    text-align: center;
+}
+
+.modal-stars li {
+    list-style: none;
+    display: inline-block;
+}
+
 /* Add Animation */
 @-webkit-keyframes animatetop {
     from {
@@ -264,6 +278,7 @@ h1 {
     padding: 2px 16px;
 }
 
+/* Play Again Button */
 .modal-button {
     padding: 6px 16px;
     background-color: #02ccba;
