@@ -18,8 +18,6 @@ let matchedCards = [];
 // Deck / Card Container
 const cardsContainer = document.querySelector('.deck');
 
-//
-
 /*
  * Build cards & assign symbol
  */
@@ -41,7 +39,6 @@ function buildCards() {
  */
 let isFirstClick = true;
 
-
 /*
  * Click counter
  */
@@ -60,7 +57,7 @@ function click(card) {
         }
 
         // Add click count
-          count++;
+        count++;
 
         const currentCard = this;
         const previousCard = openedCards[0];
@@ -72,13 +69,13 @@ function click(card) {
 
             // If true compare selected symbols
             compare(currentCard, previousCard);
-        } else if (count < 3){
+        } else if (count < 3) {
 
             // Show symbol
             card.classList.add('open', 'show', 'disable');
             openedCards.push(this);
         } else {
-          return false;
+            return false;
         }
     });
 
@@ -122,8 +119,8 @@ function compare(currentCard, previousCard) {
 
     // Reset click count
     setTimeout(function() {
-    count = 0;
-  }, 500);
+        count = 0;
+    }, 500);
 
 
 }
@@ -248,21 +245,21 @@ function restart() {
 }
 
 //Restart button
-document.querySelector('.restart').addEventListener('click', function(){
-  restart();
+document.querySelector('.restart').addEventListener('click', function() {
+    restart();
 });
 /*
  * End game modal
  */
- // Star rating for modal
- function modalRating() {
-     if (moves > 16) {
-         document.getElementById('star-three-modal').style.display = 'none';
-     }
-     if (moves > 24) {
-         document.getElementById('star-two-modal').style.display = 'none';
-     }
- }
+// Star rating for modal
+function modalRating() {
+    if (moves > 16) {
+        document.getElementById('star-three-modal').style.display = 'none';
+    }
+    if (moves > 24) {
+        document.getElementById('star-two-modal').style.display = 'none';
+    }
+}
 
 
 //Display modal function
