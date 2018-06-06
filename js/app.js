@@ -233,20 +233,20 @@ document.querySelector('.restart').addEventListener('click', restart());
 
 /*
  * End game modal
-*  - BUG - DOESNT DISPLAY SECONDS AND MOVES VARIABLES 
+*  - BUG - DOESNT DISPLAY SECONDS AND MOVES VARIABLES
  */
 //Display modal function
 function displayModal() {
     modal.style.display = "block";
+
+    // Stats for modal
+    document.querySelector('.modal-body').innerHTML = 'You completed the game in ' + totalSeconds + ' seconds, and in ' + moves + ' moves!';
 }
 
 const modal = document.getElementById('modal');
 
 // Cross that closes the modal
 const span = document.getElementsByClassName('close')[0];
-
-// Stats for modal
-document.querySelector('.modal-body').innerHTML = 'You completed the game in ' + totalSeconds + ' seconds, and in ' + moves + ' moves!';
 
 // Close the modal using the x
 span.onclick = function() {
