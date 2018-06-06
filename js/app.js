@@ -1,12 +1,21 @@
 // Card array
-let cardSymbol = ['fa fa-paper-plane-o', 'fa fa-paper-plane-o',
-    'fa fa-bolt', 'fa fa-bolt',
-    'fa fa-cube', 'fa fa-cube',
-    'fa fa-anchor', 'fa fa-anchor',
-    'fa fa-leaf', 'fa fa-leaf',
-    'fa fa-bicycle', 'fa fa-bicycle',
-    'fa fa-diamond', 'fa fa-diamond',
-    'fa fa-bomb', 'fa fa-bomb'
+let cardSymbol = [
+    "fa fa-paper-plane-o",
+    "fa fa-paper-plane-o",
+    "fa fa-bolt",
+    "fa fa-bolt",
+    "fa fa-cube",
+    "fa fa-cube",
+    "fa fa-anchor",
+    "fa fa-anchor",
+    "fa fa-leaf",
+    "fa fa-leaf",
+    "fa fa-bicycle",
+    "fa fa-bicycle",
+    "fa fa-diamond",
+    "fa fa-diamond",
+    "fa fa-bomb",
+    "fa fa-bomb"
 ];
 
 // Open card array
@@ -16,8 +25,7 @@ let openedCards = [];
 let matchedCards = [];
 
 // Deck / Card Container
-const cardsContainer = document.querySelector('.deck');
-
+const cardsContainer = document.querySelector(".deck");
 
 /*
  * Build cards & assign symbol
@@ -26,8 +34,8 @@ function buildCards() {
     // Shuffle symbols
     shuffle(cardSymbol);
     for (let i = 0; i < cardSymbol.length; i++) {
-        const card = document.createElement('li');
-        card.classList.add('card');
+        const card = document.createElement("li");
+        card.classList.add("card");
         card.innerHTML = "<i class='" + cardSymbol[i] + "'</i>";
         cardsContainer.appendChild(card);
         // add main click event for each card
@@ -44,8 +52,7 @@ let isFirstClick = true;
  * Main click event function
  */
 function click(card) {
-    card.addEventListener('click', function() {
-
+    card.addEventListener("click", function() {
         // Start stopwatch
         if (isFirstClick) {
             startStopwatch();
@@ -56,22 +63,18 @@ function click(card) {
         const previousCard = openedCards[0];
 
         if (openedCards.length === 1) {
-
             // Show symbol
-            card.classList.add('open', 'show', 'disable');
+            card.classList.add("open", "show", "disable");
             openedCards.push(this);
 
             // If true compare selected symbols
             compare(currentCard, previousCard);
         } else {
-
             // Show symbol
-            card.classList.add('open', 'show', 'disable');
+            card.classList.add("open", "show", "disable");
             openedCards.push(this);
         }
-
     });
-
 }
 
 /*
@@ -80,8 +83,8 @@ function click(card) {
 function compare(currentCard, previousCard) {
     if (currentCard.innerHTML === previousCard.innerHTML) {
         // Add match class
-        currentCard.classList.add('match');
-        previousCard.classList.add('match');
+        currentCard.classList.add("match");
+        previousCard.classList.add("match");
 
         // Add to matchedCards array
         matchedCards.push(currentCard, previousCard);
@@ -91,17 +94,25 @@ function compare(currentCard, previousCard) {
 
         // Check if game is completed
         endGame();
-
     } else {
         // Add mismatch class
-        currentCard.classList.add('miss-match');
-        previousCard.classList.add('miss-match');
+        currentCard.classList.add("miss-match");
+        previousCard.classList.add("miss-match");
 
         //hide symbols after .8 secs
         setTimeout(function() {
-            currentCard.classList.remove('open', 'show', 'miss-match', 'disable');
-            previousCard.classList.remove('open', 'show', 'miss-match', 'disable');
-
+            currentCard.classList.remove(
+                "open",
+                "show",
+                "miss-match",
+                "disable"
+            );
+            previousCard.classList.remove(
+                "open",
+                "show",
+                "miss-match",
+                "disable"
+            );
         }, 800);
 
         // Clear openedCards array
@@ -128,7 +139,8 @@ function endGame() {
  */
 function shuffle(array) {
     var currentIndex = array.length,
-        temporaryValue, randomIndex;
+        temporaryValue,
+        randomIndex;
 
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
@@ -144,7 +156,7 @@ function shuffle(array) {
 /*
  * Move counter
  */
-const movesCounter = document.getElementById('moves');
+const movesCounter = document.getElementById("moves");
 let moves = 0;
 
 function addMove() {
@@ -160,28 +172,28 @@ function addMove() {
  */
 function rating() {
     if (moves > 16) {
-        document.getElementById('star-three').style.display = 'none';
+        document.getElementById("star-three").style.display = "none";
     }
     if (moves > 24) {
-        document.getElementById('star-two').style.display = 'none';
+        document.getElementById("star-two").style.display = "none";
     }
 }
 
 /*
  * Stopwatch
  */
-const stopwatchContainer = document.querySelector('.stopWatch');
+const stopwatchContainer = document.querySelector(".stopWatch");
 
 let stopwatch,
     totalSeconds = 0;
 
 // Set stopWatch
-stopwatchContainer.innerHTML = totalSeconds + ' Seconds  ';
+stopwatchContainer.innerHTML = totalSeconds + " Seconds  ";
 
 function startStopwatch() {
     stopwatch = setInterval(function() {
         totalSeconds++;
-        stopwatchContainer.innerHTML = totalSeconds + ' Seconds';
+        stopwatchContainer.innerHTML = totalSeconds + " Seconds";
     }, 1000);
 }
 
@@ -189,7 +201,6 @@ function startStopwatch() {
 function pauseStopwatch() {
     clearInterval(stopwatch);
 }
-
 
 /*
  * Start the game
@@ -204,7 +215,7 @@ buildCards();
 //Restart function
 function restart() {
     // delete cards
-    cardsContainer.innerHTML = '';
+    cardsContainer.innerHTML = "";
 
     // create new cards
     buildCards();
@@ -215,11 +226,11 @@ function restart() {
 
     // reset moves counter
     moves = 0;
-    movesCounter.innerHTML = '0';
+    movesCounter.innerHTML = "0";
 
     // reset stars
-    document.getElementById('star-three').style.display = '';
-    document.getElementById('star-two').style.display = '';
+    document.getElementById("star-three").style.display = "";
+    document.getElementById("star-two").style.display = "";
 
     //reset stopWatch
     pauseStopwatch();
@@ -229,7 +240,7 @@ function restart() {
 }
 
 //Restart button
-document.querySelector('.restart').addEventListener('click', restart());
+document.querySelector(".restart").addEventListener("click", restart());
 
 /*
  * End game modal
@@ -238,15 +249,20 @@ document.querySelector('.restart').addEventListener('click', restart());
 //Display modal function
 function displayModal() {
     modal.style.display = "block";
+
+    // Stats for modal
+    document.querySelector(".modal-body").innerHTML =
+        "You completed the game in " +
+        totalSeconds +
+        " seconds, and in " +
+        moves +
+        " moves!";
 }
 
-const modal = document.getElementById('modal');
+const modal = document.getElementById("modal");
 
 // Cross that closes the modal
-const span = document.getElementsByClassName('close')[0];
-
-// Stats for modal
-document.querySelector('.modal-body').innerHTML = 'You completed the game in ' + totalSeconds + ' seconds, and in ' + moves + ' moves!';
+const span = document.getElementsByClassName("close")[0];
 
 // Close the modal using the x
 span.onclick = function() {
@@ -260,7 +276,9 @@ window.onclick = function(event) {
 };
 
 // Play again button
-document.querySelector('.modal-button').addEventListener("click", function playAgain() {
-    modal.style.display = "none";
-    restart();
-});
+document
+    .querySelector(".modal-button")
+    .addEventListener("click", function playAgain() {
+        modal.style.display = "none";
+        restart();
+    });
