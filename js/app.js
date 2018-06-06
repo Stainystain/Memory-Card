@@ -18,6 +18,7 @@ let matchedCards = [];
 // Deck / Card Container
 const cardsContainer = document.querySelector('.deck');
 
+//
 
 /*
  * Build cards & assign symbol
@@ -40,6 +41,12 @@ function buildCards() {
  */
 let isFirstClick = true;
 
+
+/*
+ * Click counter
+ */
+let count = 0;
+
 /*
  * Main click event function
  */
@@ -52,24 +59,28 @@ function click(card) {
             isFirstClick = false;
         }
 
+        // Add click count
+          count++;
+          console.log(count);
+
         const currentCard = this;
         const previousCard = openedCards[0];
 
-        if (openedCards.length === 1) {
+        if (openedCards.length === 1 && count < 3) {
 
             // Show symbol
             card.classList.add('open', 'show', 'disable');
-            openedCards.push(this);
 
             // If true compare selected symbols
             compare(currentCard, previousCard);
-        } else {
+        } else if (count < 3){
 
             // Show symbol
             card.classList.add('open', 'show', 'disable');
             openedCards.push(this);
+        } else {
+          return false;
         }
-
     });
 
 }
@@ -79,9 +90,9 @@ function click(card) {
  */
 function compare(currentCard, previousCard) {
     if (currentCard.innerHTML === previousCard.innerHTML) {
-        // Add match class
-        currentCard.classList.add('match');
-        previousCard.classList.add('match');
+        // Add match class & stop further clicks
+        currentCard.classList.add('match', 'disable');
+        previousCard.classList.add('match', 'disable');
 
         // Add to matchedCards array
         matchedCards.push(currentCard, previousCard);
@@ -94,8 +105,8 @@ function compare(currentCard, previousCard) {
 
     } else {
         // Add mismatch class
-        currentCard.classList.add('miss-match');
-        previousCard.classList.add('miss-match');
+        currentCard.classList.add('miss-match', 'disable');
+        previousCard.classList.add('miss-match', 'disable');
 
         //hide symbols after .8 secs
         setTimeout(function() {
@@ -109,6 +120,13 @@ function compare(currentCard, previousCard) {
     }
     // Add move to counter
     addMove();
+
+    // Reset click count
+    setTimeout(function() {
+    count = 0;
+  }, 500);
+
+
 }
 
 /*
@@ -225,7 +243,11 @@ function restart() {
     isFirstClick = true;
     totalSeconds = 0;
     stopwatchContainer.innerHTML = totalSeconds + "s";
+
+    // Reset click count
+    count = 0;
 }
+
 //Restart button
 document.querySelector('.restart').addEventListener('click', function(){
   restart();
