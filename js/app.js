@@ -198,7 +198,6 @@ buildCards();
 
 /*
  * Reset the game
- *  - BUG - WORKS FOR MODAL PLAY AGAIN BUTTON BUT NOT ON PAGE RESTART BUTTON
  */
 
 //Restart function
@@ -227,13 +226,12 @@ function restart() {
     totalSeconds = 0;
     stopwatchContainer.innerHTML = totalSeconds + "s";
 }
-
 //Restart button
-document.querySelector('.restart').addEventListener('click', restart());
-
+document.querySelector('.restart').addEventListener('click', function(){
+  restart();
+});
 /*
  * End game modal
-*  - BUG - DOESNT DISPLAY SECONDS AND MOVES VARIABLES
  */
 //Display modal function
 function displayModal() {
@@ -252,6 +250,7 @@ const span = document.getElementsByClassName('close')[0];
 span.onclick = function() {
     modal.style.display = "none";
 };
+
 // Close modal if page is clicked
 window.onclick = function(event) {
     if (event.target == modal) {
