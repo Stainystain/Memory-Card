@@ -2,19 +2,25 @@
 
 ## Table of Contents
 
+* [Description](#description)
+* [Features](#features)
 * [Instructions](#instructions)
-* [Contributing](#contributing)
+
+## Description
+
+A browser based card matching game built with vanilla javascript, html & css.
+A project completed for Udacity's Front-End Web Developer Nanodegree Program (Google Scholarship).
+
+
+## Features
+
+- Move Counter
+- Stopwatch
+- Rating System
+- Restart Button
+
 
 ## Instructions
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
-
-To get started, open `js/app.js` and start building out the app's functionality
-
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
-
-## Contributing
-
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+The memory card game, also known as concentration, is a card game in which a selection of cards are laid face down and two cards are then turned over for each turn.  The object of the game is to turn over pairs of matching cards.  If matching pairs are found they remain shown, if not the cards get turned back over - thus a game of remembering where certain cards are.
+In this version the game is rated on the time and moves taken to find all pairs.
