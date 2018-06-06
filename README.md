@@ -11,6 +11,8 @@
 A browser based card matching game built with vanilla javascript, html & css.
 A project completed for Udacity's Front-End Web Developer Nanodegree Program (Google Scholarship).
 
+[Live Preview](https://stainystain.github.io/Memory-Card/)
+
 
 ## Features
 
