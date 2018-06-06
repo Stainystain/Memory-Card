@@ -61,7 +61,6 @@ function click(card) {
 
         // Add click count
           count++;
-          console.log(count);
 
         const currentCard = this;
         const previousCard = openedCards[0];
